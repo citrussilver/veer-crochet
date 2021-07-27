@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 :root {
     --background: #efe7df;
     --primary: #755f78;
@@ -24,11 +30,14 @@ body {
 }
 
 .wavy-background-1 section {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffacad' fill-opacity='1' d='M0,0L120,5.3C240,11,480,21,720,21.3C960,21,1200,11,1320,5.3L1440,0L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-    position: absolute;
-    bottom: 10vh;
-    z-index: -1;
     opacity: 0;
+    /* original */
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffacad' fill-opacity='1' d='M0,0L120,5.3C240,11,480,21,720,21.3C960,21,1200,11,1320,5.3L1440,0L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    /* content: url("data:image/svg+xml,%3Csvg height='100%25' width='100%25' id='svg' viewBox='0 0 1440 700' xmlns='http://www.w3.org/2000/svg' class='transition duration-300 ease-in-out delay-150'%3E%3Cpath d='M 0,700 C 0,700 0,350 0,350 C 296,374 592,398 832,398 C 1072,398 1256,374 1440,350 C 1440,350 1440,700 1440,700 Z' stroke='none' stroke-width='0' fill='%23ffacadff' class='transition-all duration-300 ease-in-out delay-150'%3E%3C/path%3E%3C/svg%3E"); */
+    position: absolute;
+    z-index: -1;
+    bottom: 10vh;
+    /* bottom: -22vh; */
     transform: translate(-50%, -25%);
     animation-name: wavy-1-slide;
     animation-delay: 0.75s;
@@ -44,34 +53,30 @@ body {
 }
 
 .wavy-background-2 section {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffdea2' fill-opacity='1' d='M0,192L30,165.3C60,139,120,85,180,90.7C240,96,300,160,360,170.7C420,181,480,139,540,117.3C600,96,660,96,720,96C780,96,840,96,900,85.3C960,75,1020,53,1080,53.3C1140,53,1200,75,1260,74.7C1320,75,1380,53,1410,42.7L1440,32L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-    position: absolute;
-    bottom: 5vh;
     opacity: 0;
-    transform: translate(0%, 50%);
-    animation-name: wavy-2-slide-up;
+    content: url("data:image/svg+xml,%3Csvg height='100%25' width='100%25' id='svg' viewBox='0 0 1440 700' xmlns='http://www.w3.org/2000/svg' class='transition duration-300 ease-in-out delay-150'%3E%3Cpath d='M 0,700 C 0,700 0,350 0,350 C 133,300.07142857142856 266,250.14285714285717 375,262 C 484,273.85714285714283 568.9999999999999,347.5 683,361 C 797.0000000000001,374.5 940,327.85714285714283 1071,316 C 1202,304.14285714285717 1321,327.07142857142856 1440,350 C 1440,350 1440,700 1440,700 Z' stroke='none' stroke-width='0' fill='%23ffdea2ff' class='transition-all duration-300 ease-in-out delay-150'%3E%3C/path%3E%3C/svg%3E");
+    position: absolute;
+    bottom: -20vh;
+    transform: translate(50%, -6%);
+    animation-name: wavy-2-slide;
     animation-delay: 0.90s;
-    animation-duration: 1s;
+    animation-duration: 0.30s;
     animation-fill-mode: forwards;
 }
 
-@keyframes wavy-2-slide-up {
+@keyframes wavy-2-slide {
     to {
-        transform: translate(0% , -6% );
+        transform: translate(0% , -6%);
         opacity: 1;
     }
 }
 
-.wavy-background-2 svg {
-    position: absolute;
-    bottom: 0px;
-}
-
 #main-img img {
+    opacity: 0;
+    content: url("/img/suisei-50p.jpg");
     position: absolute;
     left: 50%;
     top: 50%;
-    opacity: 0;
     transform: translate(-50%, 0%);
     animation-name: move-subject;
     animation-duration: 0.90s;
@@ -86,11 +91,11 @@ body {
 }
 
 #veer-div {
+    opacity: 0;
     position: absolute;
     bottom: 5vh;
     left: 49%;
     top: 50%;
-    opacity: 0;
     transform: translate(-50%, 25%);
     animation-name: text-slide;
     animation-delay: 1.7s;
@@ -115,12 +120,12 @@ body {
 }
 
 #catchphrase-div {
+    opacity: 0;
     position: absolute;
     bottom: 0px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, 60%);
-    opacity: 0;
     animation-name: cp-slide;
     animation-delay: 2.5s;
     animation-duration: 0.90s;
@@ -171,9 +176,9 @@ body {
 }
 
 #fb-icon {
+    opacity: 0;
     position: relative;
     bottom: -1rem;
-    opacity: 0;
     animation-name: fb-slide;
     animation-delay: 3s;
     animation-duration: 0.90s;
@@ -188,9 +193,9 @@ body {
 }
 
 #ig-icon {
+    opacity: 0;
     position: relative;
     bottom: -1rem;
-    opacity: 0;
     animation-name: ig-slide;
     animation-delay: 3.5s;
     animation-duration: 0.90s;
@@ -201,17 +206,15 @@ body {
     to {
         opacity: 1;
         bottom: 0rem;
-    }
-}
+    }    
+} 
 
 @media only screen and (max-width: 600px) {
-    #main-img > img {
-        height: 25vh;
-        width: auto;
+    #main-img img {
+        content: url("/img/suisei-226.jpg");
     }
 
     .wavy-background-1 section {
-        /* waving animation */
         content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffacad' fill-opacity='1' d='M0,64L34.3,69.3C68.6,75,137,85,206,74.7C274.3,64,343,32,411,58.7C480,85,549,171,617,176C685.7,181,754,107,823,96C891.4,85,960,139,1029,149.3C1097.1,160,1166,128,1234,133.3C1302.9,139,1371,181,1406,202.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
         /* slanting */
         /* content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffacad' fill-opacity='1' d='M0,128L60,138.7C120,149,240,171,360,165.3C480,160,600,128,720,117.3C840,107,960,117,1080,106.7C1200,96,1320,64,1380,48L1440,32L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E"); */
@@ -223,7 +226,7 @@ body {
         content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffdea2' fill-opacity='1' d='M0,32L48,32C96,32,192,32,288,58.7C384,85,480,139,576,149.3C672,160,768,128,864,122.7C960,117,1056,139,1152,160C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
         height: 45vh;
         position: absolute;
-        bottom: -2rem;
+        bottom: -2.5rem;
     }
 
     #veer-text {
