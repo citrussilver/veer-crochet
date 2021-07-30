@@ -76,7 +76,24 @@ body {
     }
 }
 
-#main-img img {
+#main-img {
+    opacity: 0;
+    background: url("/img/suisei-50p.jpg") center center no-repeat;
+    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
+    /* box-shadow:inset 0px 0px 6px 6px rgba(255,255,255,1); */
+    border-radius: 1rem;
+    position: absolute;
+    height: 480px;
+    width: 480px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+    animation-name: move-subject;
+    animation-duration: 0.90s;
+    animation-fill-mode: forwards;
+}
+
+/* #main-img img {
     opacity: 0;
     content: url("/img/suisei-50p.jpg");
     position: absolute;
@@ -86,7 +103,7 @@ body {
     animation-name: move-subject;
     animation-duration: 0.90s;
     animation-fill-mode: forwards;
-}
+} */
 
 @keyframes move-subject {
     to {
@@ -216,8 +233,10 @@ body {
 } 
 
 @media only screen and (max-width: 600px) {
-    #main-img img {
-        content: url("/img/suisei-226.jpg");
+    #main-img {
+        height: 226px;
+        width: 226px;
+        background: url("/img/suisei-226.jpg") center center no-repeat;
     }
 
     .wavy-background-1 section {
@@ -230,7 +249,7 @@ body {
 
     .wavy-background-2 section {
         content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffdea2' fill-opacity='1' d='M0,32L48,32C96,32,192,32,288,58.7C384,85,480,139,576,149.3C672,160,768,128,864,122.7C960,117,1056,139,1152,160C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-        height: 45vh;
+        height: 47vh;
         position: absolute;
         bottom: -2.5rem;
     }
