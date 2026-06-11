@@ -37,9 +37,16 @@ export function initGallery(container, slides = CAROUSEL_SLIDES) {
     nextBtn.style.top = `${centerY}px`;
 
     if (isMobile) {
-      const inset = 6;
-      prevBtn.style.left = `${viewportRect.left - containerRect.left + inset}px`;
-      nextBtn.style.left = `${viewportRect.right - containerRect.left - nextBtn.offsetWidth - inset}px`;
+      const gap = 8;
+      const minEdge = 4;
+      const prevLeft = viewportRect.left - containerRect.left - prevBtn.offsetWidth - gap;
+      const nextLeft = viewportRect.right - containerRect.left + gap;
+
+      prevBtn.style.left = `${Math.max(minEdge, prevLeft)}px`;
+      nextBtn.style.left = `${Math.min(
+        containerRect.width - nextBtn.offsetWidth - minEdge,
+        nextLeft
+      )}px`;
       return;
     }
 
