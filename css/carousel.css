@@ -214,11 +214,29 @@
 .gallery-flyer {
     position: fixed;
     z-index: 50;
+    pointer-events: none;
+    margin: 0;
     object-fit: cover;
     border-radius: 1rem;
     box-shadow: 0 12px 32px rgba(117, 95, 120, 0.22);
-    pointer-events: none;
-    margin: 0;
+}
+
+.gallery-flyer--frame {
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow:
+        25px 25px 50px 0 white inset,
+        -25px -25px 50px 0 white inset,
+        0 12px 32px rgba(117, 95, 120, 0.22);
+}
+
+.gallery-flyer--frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    transform: rotate(calc(-1 * var(--gallery-frame-tilt)));
 }
 
 /* --- Mobile --- */
@@ -306,5 +324,11 @@
     .gallery-basket__strip {
         transition: none !important;
         animation: none !important;
+    }
+
+    .gallery-stage {
+        animation: none;
+        opacity: 1;
+        transform: translate(var(--gallery-frame-x), var(--gallery-frame-y)) rotate(var(--gallery-frame-tilt));
     }
 }
