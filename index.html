@@ -7,20 +7,50 @@
     <title>Veer Crochet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Permanent+Marker&family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/06f545a89b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/carousel.css">
 </head>
 <body>
     <div class="container">
-        <div id="main-img">
-            <!-- <img alt="main_image"> -->
+        <div id="main-img" aria-hidden="false">
+            <img
+                id="gallery-active-img"
+                class="gallery__active-img"
+                src="/img/suisei-50p.jpg"
+                alt="Hoshimachi Suisei crochet doll"
+                draggable="false"
+            >
         </div>
-        <div class="wavy-background-1">
-            <section></section>
+        <div id="gallery-ui" class="gallery-ui" hidden>
+            <button type="button" id="gallery-prev" class="gallery-nav gallery-nav--prev">Prev</button>
+            <button type="button" id="gallery-next" class="gallery-nav gallery-nav--next">Next</button>
         </div>
-        <div class="wavy-background-2">
-            <section></section>
+        <aside id="gallery-basket" class="gallery-basket" hidden aria-label="Photo prize catcher">
+            <div class="gallery-basket__strips"></div>
+            <img src="/img/ufo-catcher.png" alt="" class="gallery-basket__img" aria-hidden="true">
+        </aside>
+        <button type="button" id="click-me-bubble" class="click-me-bubble gallery-dismiss" hidden>
+            <span class="click-me-bubble__tail" aria-hidden="true"></span>
+            Click Me !
+        </button>
+        <div class="wave wave-1" aria-hidden="true">
+            <svg class="wave-shape wave-shape--desktop" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffacad" d="M0,0L120,5.3C240,11,480,21,720,21.3C960,21,1200,11,1320,5.3L1440,0L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"/>
+            </svg>
+            <svg class="wave-shape wave-shape--mobile" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffacad" d="M0,64L34.3,69.3C68.6,75,137,85,206,74.7C274.3,64,343,32,411,58.7C480,85,549,171,617,176C685.7,181,754,107,823,96C891.4,85,960,139,1029,149.3C1097.1,160,1166,128,1234,133.3C1302.9,139,1371,181,1406,202.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"/>
+            </svg>
+        </div>
+        <div class="wave wave-2" aria-hidden="true">
+            <svg class="wave-shape wave-shape--desktop" viewBox="0 0 1440 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffdea2" d="M 0,700 C 0,700 0,350 0,350 C 133,300.07142857142856 266,250.14285714285717 375,262 C 484,273.85714285714283 568.9999999999999,347.5 683,361 C 797.0000000000001,374.5 940,327.85714285714283 1071,316 C 1202,304.14285714285717 1321,327.07142857142856 1440,350 C 1440,350 1440,700 1440,700 Z"/>
+            </svg>
+            <svg class="wave-shape wave-shape--mobile" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffdea2" d="M0,32L48,32C96,32,192,32,288,58.7C384,85,480,139,576,149.3C672,160,768,128,864,122.7C960,117,1056,139,1152,160C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+            </svg>
         </div>
         <div id="veer-div">
             <section id="veer-text" class="text-styling">Veer Crochet</section>
@@ -32,6 +62,10 @@
             <div id="fb-icon" class="text-styling"><a href="https://www.facebook.com/VeerCrochet" title="Official FB Page" alt="FB Page" target="_blank"><i class="fab fa-facebook fa-3x"></i></a></div>
             <div id="ig-icon" class="text-styling"><a href="https://instagram.com/veercrochet" title="Official IG Page" alt="IG Page" target="_blank"><i class="fab fa-instagram fa-3x"></i></a></div>
         </div>
+        <footer class="site-footer">
+            <small>2021 DrunkIceCube</small>
+        </footer>
     </div>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

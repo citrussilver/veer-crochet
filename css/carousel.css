@@ -1,0 +1,308 @@
+.gallery-dismiss {
+    transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease;
+}
+
+#main-img {
+    cursor: default;
+}
+
+#main-img.intro-ready {
+    cursor: pointer;
+}
+
+/* --- Click Me bubble --- */
+
+.click-me-bubble {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    padding: 0.55rem 1.1rem;
+    border: 3px solid #16a34a;
+    border-radius: 999px;
+    background: #f0fdf4;
+    color: #15803d;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.35rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(22, 163, 74, 0.18);
+    opacity: 0;
+    transform: scale(0.85) rotate(-4deg);
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.click-me-bubble--visible {
+    opacity: 1;
+    transform: scale(1) rotate(-3deg);
+    pointer-events: auto;
+    animation: bubble-bounce 2s ease-in-out 0.45s infinite;
+}
+
+.click-me-bubble__tail {
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 16px solid #16a34a;
+    transform: translateY(-50%);
+}
+
+.click-me-bubble__tail::after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 4px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 12px solid #f0fdf4;
+}
+
+@keyframes bubble-bounce {
+    0%,
+    100% {
+        transform: scale(1) rotate(-3deg) translateY(0);
+    }
+    50% {
+        transform: scale(1.04) rotate(-2deg) translateY(-4px);
+    }
+}
+
+/* --- Gallery active state --- */
+
+.container.carousel-active .gallery-dismiss {
+    opacity: 0 !important;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.container.carousel-active #main-img {
+    cursor: default;
+}
+
+.container.carousel-active .wave {
+    z-index: 1;
+}
+
+.container.carousel-active .icons-div {
+    z-index: 6;
+}
+
+.container.carousel-active .celebration-mount:not(.celebration-mount--local) {
+    display: none;
+}
+
+/* --- Prev / Next (Permanent Marker, Dribbble-style flanking) --- */
+
+.gallery-ui {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.gallery-ui--visible {
+    pointer-events: auto;
+}
+
+.gallery-nav {
+    position: absolute;
+    transform: translateY(-50%);
+    padding: 0.5rem 0.85rem;
+    border: 3px solid #16a34a;
+    border-radius: 999px;
+    background: #f0fdf4;
+    color: #15803d;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.15rem;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: 0 6px 18px rgba(22, 163, 74, 0.16);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.2s ease;
+}
+
+.gallery-ui--visible .gallery-nav {
+    opacity: 1;
+}
+
+.gallery-nav:hover {
+    transform: translateY(-50%) scale(1.06);
+    background: #dcfce7;
+}
+
+.gallery-nav:disabled {
+    opacity: 0.45;
+    cursor: wait;
+}
+
+/* --- Basket (bottom-left tucked edges) --- */
+
+.gallery-basket {
+    position: absolute;
+    left: 2.25rem;
+    bottom: 4.5vh;
+    z-index: 6;
+    width: 10.125rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    filter: drop-shadow(0 8px 16px rgba(117, 95, 120, 0.18));
+    isolation: isolate;
+}
+
+.gallery-basket--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-basket__img {
+    display: block;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+}
+
+.gallery-basket__strips {
+    position: absolute;
+    z-index: 1;
+    left: 30%;
+    right: 30%;
+    top: 78%;
+    bottom: 5%;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.gallery-basket__strip {
+    flex: 0 0 0.72rem;
+    height: 72%;
+    border-radius: 2px 0 0 2px;
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    transform: translateX(-6px) scaleY(0.7);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gallery-basket__strip--visible {
+    opacity: 1;
+    transform: translateX(0) scaleY(1);
+}
+
+/* Flying clone during diagonal tuck */
+
+.gallery-flyer {
+    position: fixed;
+    z-index: 50;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 12px 32px rgba(117, 95, 120, 0.22);
+    pointer-events: none;
+    margin: 0;
+}
+
+/* --- Mobile --- */
+
+.click-me-bubble--mobile-below {
+    transform-origin: top center;
+    transform: translateX(-50%) scale(0.85) rotate(-2deg);
+}
+
+.click-me-bubble--mobile-below.click-me-bubble--visible {
+    transform: translateX(-50%) scale(1) rotate(-2deg);
+}
+
+.click-me-bubble--mobile-below .click-me-bubble__tail {
+    left: 50%;
+    top: -12px;
+    border-right: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 14px solid #16a34a;
+    transform: translateX(-50%);
+}
+
+.click-me-bubble--mobile-below .click-me-bubble__tail::after {
+    top: 4px;
+    left: -7px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 11px solid #f0fdf4;
+    border-top: none;
+}
+
+.click-me-bubble--visible.click-me-bubble--mobile-below {
+    animation-name: bubble-bounce-mobile;
+}
+
+@media only screen and (max-width: 600px) {
+    .click-me-bubble {
+        font-size: 1rem;
+        padding: 0.45rem 0.85rem;
+    }
+
+    .gallery-nav {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.65rem;
+    }
+
+    .gallery-basket {
+        left: 1.75rem;
+        bottom: 3.5vh;
+        width: 7.875rem;
+    }
+
+    .gallery-basket__strips {
+        left: 32%;
+        right: 32%;
+        top: 79%;
+        bottom: 4%;
+    }
+
+    .gallery-basket__strip {
+        flex-basis: 0.58rem;
+    }
+}
+
+@keyframes bubble-bounce-mobile {
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1) rotate(-2deg) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.03) rotate(-1deg) translateY(-3px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .click-me-bubble--visible {
+        animation: none;
+    }
+
+    .gallery__active-img,
+    .gallery-flyer,
+    .gallery-basket__strip {
+        transition: none !important;
+        animation: none !important;
+    }
+}
