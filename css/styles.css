@@ -263,6 +263,22 @@ body {
     }    
 } 
 
+.site-footer {
+    position: absolute;
+    bottom: 0.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 7;
+    pointer-events: none;
+}
+
+.site-footer small {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    color: rgba(117, 95, 120, 0.5);
+}
+
 @media only screen and (max-width: 600px) {
     #main-img {
         height: 226px;
@@ -300,5 +316,9 @@ body {
     .icons-div {
         column-gap: 3rem;
         transform: translate(-50%, 32%);
+    }
+
+    .site-footer small {
+        font-size: 0.58rem;
     }
 }
