@@ -62,8 +62,8 @@ body {
 }
 
 .wave-1 {
-    bottom: 12vh;
-    height: 50vh;
+    bottom: 10vh;
+    height: 54vh;
     transform: translateX(-100%);
     animation-name: wavy-1-slide;
     animation-delay: 0.75s;
@@ -294,8 +294,8 @@ body {
     }
 
     .wave-1 {
-        bottom: 4vh;
-        height: 64vh;
+        bottom: 0;
+        height: 72vh;
     }
 
     .wave-2 {
