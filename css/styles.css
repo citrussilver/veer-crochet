@@ -8,6 +8,9 @@
     --background: #efe7df;
     --primary: #755f78;
     --secondary: #b6783f;
+    --gallery-frame-x: -46%;
+    --gallery-frame-y: -70%;
+    --gallery-frame-tilt: -5deg;
 }
 
 @font-face {
@@ -95,21 +98,25 @@ body {
     }
 }
 
-#main-img {
-    opacity: 0;
-    overflow: hidden;
-    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
-    border-radius: 1rem;
+.gallery-stage {
     position: absolute;
-    height: 480px;
-    width: 480px;
     left: 50%;
     top: 50%;
+    z-index: 3;
+    opacity: 0;
     transform: translate(-50%, 0%);
     animation-name: move-subject;
     animation-duration: 0.90s;
     animation-fill-mode: forwards;
-    z-index: 3;
+}
+
+#main-img {
+    overflow: hidden;
+    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
+    border-radius: 1rem;
+    position: relative;
+    height: 480px;
+    width: 480px;
 }
 
 .gallery__active-img {
@@ -120,6 +127,7 @@ body {
     border-radius: 1rem;
     user-select: none;
     will-change: transform, opacity;
+    transform: rotate(calc(-1 * var(--gallery-frame-tilt)));
 }
 
 /* #main-img img {
@@ -136,7 +144,7 @@ body {
 
 @keyframes move-subject {
     to {
-        transform: translate(-50%, -70%);
+        transform: translate(var(--gallery-frame-x), var(--gallery-frame-y)) rotate(var(--gallery-frame-tilt));
         opacity: 1;
     }
 }
@@ -280,6 +288,11 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+    :root {
+        --gallery-frame-x: -45%;
+        --gallery-frame-tilt: -4deg;
+    }
+
     #main-img {
         height: 226px;
         width: 226px;
