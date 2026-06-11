@@ -155,7 +155,7 @@
     left: 2.25rem;
     bottom: 4.5vh;
     z-index: 6;
-    width: 10.125rem;
+    width: 7.5rem;
     opacity: 0;
     transform: translateY(12px);
     transition: opacity 0.45s ease, transform 0.45s ease;
@@ -223,36 +223,38 @@
 
 /* --- Mobile --- */
 
-.click-me-bubble--mobile-below {
-    transform-origin: top center;
-    transform: translateX(-50%) scale(0.85) rotate(-2deg);
+.click-me-bubble--mobile-above {
+    transform-origin: bottom center;
+    transform: translateX(-50%) translateY(-100%) scale(0.85) rotate(-2deg);
 }
 
-.click-me-bubble--mobile-below.click-me-bubble--visible {
-    transform: translateX(-50%) scale(1) rotate(-2deg);
+.click-me-bubble--mobile-above.click-me-bubble--visible {
+    transform: translateX(-50%) translateY(-100%) scale(1) rotate(-2deg);
 }
 
-.click-me-bubble--mobile-below .click-me-bubble__tail {
+.click-me-bubble--mobile-above .click-me-bubble__tail {
     left: 50%;
-    top: -12px;
+    bottom: -12px;
+    top: auto;
     border-right: none;
     border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 14px solid #16a34a;
+    border-top: 14px solid #16a34a;
+    border-bottom: none;
     transform: translateX(-50%);
 }
 
-.click-me-bubble--mobile-below .click-me-bubble__tail::after {
-    top: 4px;
+.click-me-bubble--mobile-above .click-me-bubble__tail::after {
+    top: auto;
+    bottom: 4px;
     left: -7px;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 11px solid #f0fdf4;
-    border-top: none;
+    border-top: 11px solid #f0fdf4;
+    border-bottom: none;
 }
 
-.click-me-bubble--visible.click-me-bubble--mobile-below {
-    animation-name: bubble-bounce-mobile;
+.click-me-bubble--visible.click-me-bubble--mobile-above {
+    animation-name: bubble-bounce-mobile-above;
 }
 
 @media only screen and (max-width: 600px) {
@@ -267,9 +269,9 @@
     }
 
     .gallery-basket {
-        left: 1.75rem;
+        left: 1.25rem;
         bottom: 3.5vh;
-        width: 7.875rem;
+        width: 5.5rem;
     }
 
     .gallery-basket__strips {
@@ -284,13 +286,13 @@
     }
 }
 
-@keyframes bubble-bounce-mobile {
+@keyframes bubble-bounce-mobile-above {
     0%,
     100% {
-        transform: translateX(-50%) scale(1) rotate(-2deg) translateY(0);
+        transform: translateX(-50%) translateY(-100%) scale(1) rotate(-2deg);
     }
     50% {
-        transform: translateX(-50%) scale(1.03) rotate(-1deg) translateY(-3px);
+        transform: translateX(-50%) translateY(calc(-100% - 4px)) scale(1.03) rotate(-1deg);
     }
 }
 

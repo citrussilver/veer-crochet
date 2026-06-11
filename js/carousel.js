@@ -9,11 +9,12 @@ function positionBubble(container, anchor, bubble) {
   const anchorRect = anchor.getBoundingClientRect();
   const isMobile = window.innerWidth <= 600;
 
-  bubble.classList.toggle('click-me-bubble--mobile-below', isMobile);
+  bubble.classList.toggle('click-me-bubble--mobile-above', isMobile);
 
   if (isMobile) {
+    const gap = 10;
     bubble.style.left = `${anchorRect.left - containerRect.left + anchorRect.width / 2}px`;
-    bubble.style.top = `${anchorRect.bottom - containerRect.top + 14}px`;
+    bubble.style.top = `${anchorRect.top - containerRect.top - gap}px`;
     return;
   }
 
