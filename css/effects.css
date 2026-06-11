@@ -1,0 +1,173 @@
+.celebration-mount {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: visible;
+}
+
+.celebration-mount--local {
+    inset: auto;
+    width: 0;
+    height: 0;
+    z-index: 8;
+}
+
+.fireworks-container {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    overflow: visible;
+}
+
+.fireworks-container--anchored {
+    left: var(--anchor-left, 50%);
+    top: var(--anchor-top, 58%);
+    transform: translate(-50%, -50%);
+}
+
+.firework-particle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    background: var(--particle-color);
+    animation: firework-burst 1.8s ease-out forwards;
+    animation-delay: var(--delay);
+    transform: translate(-50%, -50%);
+}
+
+.firework-layer-1 {
+    width: 6px;
+    height: 6px;
+    box-shadow:
+        0 0 8px var(--particle-color),
+        0 0 16px var(--particle-color),
+        0 0 24px var(--particle-color);
+}
+
+.firework-layer-2 {
+    width: 8px;
+    height: 8px;
+    box-shadow:
+        0 0 12px var(--particle-color),
+        0 0 24px var(--particle-color),
+        0 0 36px var(--particle-color);
+}
+
+.firework-layer-3 {
+    width: 10px;
+    height: 10px;
+    box-shadow:
+        0 0 16px var(--particle-color),
+        0 0 32px var(--particle-color),
+        0 0 48px var(--particle-color);
+}
+
+@keyframes firework-burst {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translate(0, 0) scale(0.8);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1.8);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(0);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .fireworks-container:not(.fireworks-container--anchored) {
+        width: 280px;
+        height: 280px;
+        top: 62%;
+    }
+
+    .fireworks-container--anchored {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+/* --- Confetti (compact burst for prize chute) --- */
+
+.confetti-container {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: visible;
+}
+
+.confetti-container--compact {
+    width: 200px;
+    height: 200px;
+}
+
+.confetti-particle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: var(--confetti-color);
+    animation: confetti-burst 1.4s ease-out forwards;
+    animation-delay: var(--delay);
+    transform: translate(-50%, -50%) rotate(var(--rotation)) scale(var(--size-variation));
+}
+
+.confetti-rectangle {
+    border-radius: 2px;
+}
+
+.confetti-circle {
+    border-radius: 50%;
+}
+
+.confetti-layer-1.confetti-rectangle { width: 5px; height: 7px; }
+.confetti-layer-1.confetti-circle { width: 6px; height: 6px; }
+.confetti-layer-2.confetti-rectangle { width: 6px; height: 8px; }
+.confetti-layer-2.confetti-circle { width: 7px; height: 7px; }
+.confetti-layer-3.confetti-rectangle { width: 7px; height: 9px; }
+.confetti-layer-3.confetti-circle { width: 8px; height: 8px; }
+
+@keyframes confetti-burst {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translate(0, 0) rotate(var(--rotation)) scale(var(--size-variation));
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translate(var(--x), var(--y))
+            rotate(calc(var(--rotation) + 180deg)) scale(calc(var(--size-variation) * 1.15));
+    }
+    55% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%)
+            translate(calc(var(--x) * 1.2), calc(var(--y) * 1.2 + 18px))
+            rotate(calc(var(--rotation) + 360deg)) scale(var(--size-variation));
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%)
+            translate(calc(var(--x) * 1.4), calc(var(--y) * 1.4 + 40px))
+            rotate(calc(var(--rotation) + 540deg)) scale(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .firework-particle,
+    .confetti-particle {
+        display: none;
+    }
+}
